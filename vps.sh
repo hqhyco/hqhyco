@@ -74,7 +74,8 @@ clear
 green " ===================================="
 green " 1. 安装docker"
 green " 2. docker界面安装"
-green " 3. 返回上一层"
+green " 3. docker compose安装"
+green " 4. 返回上一层"
 green " 0. 退出"
 green " ===================================="
 read -p "请输入数字:" num
@@ -90,6 +91,12 @@ read -p "请输入数字:" num
     docker run -d -p 9000:9000 -p 8000:8000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
     ;;
     3)
+    curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
+    ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+    docker-compose --version
+    ;;
+    4)
     start_menu
     ;;
     0)
