@@ -16,7 +16,7 @@ red(){
 
 function bbr_plus(){
 cd /root
-if [-f "tcp.sh"]; then
+if [-e "tcp.sh"]; then
 ./tcp.sh
 else
 wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" 
@@ -38,7 +38,7 @@ read -p "请输入数字:" num
     case "$num" in
     1)
     cd /root
-    if [-f "install.sh"]; then
+    if [-e "install.sh"]; then
 	bash install.sh
 	else
 	wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh
@@ -109,13 +109,6 @@ read -p "请输入数字:" num
     install_docker
     ;;
     esac
-
-}
-
-function install_trojan(){
-cd /root
-chmod +x trojan_mult.sh
-./trojan_mult.sh
 
 }
 
