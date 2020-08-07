@@ -112,6 +112,14 @@ read -p "请输入数字:" num
 
 }
 
+function gcp_root(){
+read -p "输入你的root密码(eg: 123456): " rootPwd
+echo root:$rootPwd |sudo chpasswd root
+sudo sed -i 's/^.*PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
+sudo sed -i 's/^.*PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
+sudo service sshd restart
+}
+
 start_menu(){
     clear
     green " ===================================="
@@ -145,7 +153,7 @@ start_menu(){
     install_docker
     ;;
     6)
-    curl -fsSL https://raw.githubusercontent.com/hqhyco/hqhyco/master/gcp_root.sh | bash
+    gcp_root
     ;;
     0)
     exit 1
