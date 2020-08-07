@@ -120,6 +120,21 @@ sudo sed -i 's/^.*PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ss
 sudo service sshd restart
 }
 
+function addSwap(){
+if [ "$(swapon --show)" == "" ]; then
+	dd if=/dev/zero of=/swapfile bs=1024 count=1024k
+	chmod 600 /swapfile
+	mkswap /swapfile
+	swapon /swapfile
+	echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+	if [ "$(swapon --show)" == "" ]; then
+		echo "添加失败,自己找原因"
+	else
+		sysctl vm.swappiness=10
+	fi
+fi
+}
+
 start_menu(){
     clear
     green " ===================================="
@@ -127,8 +142,8 @@ start_menu(){
     green " 系统：debian或者ubuntu"
     green " ===================================="
     echo
-    green " 1. update"
-    green " 2. 安装curl,screen,unzip,tar"
+    green " 1. update&&安装curl screen unzip"
+    green " 2. swap分区添加1G"
     green " 3. 安装bbr加速"
     green " 4. 安装lnmp或者宝塔"
     green " 5. 安装docker及界面"
@@ -138,10 +153,10 @@ start_menu(){
     read -p "请输入数字:" num
     case "$num" in
     1)
-    apt-get -y update
+    apt-get -y update && apt-get -y install curl screen unzip
     ;;
     2)
-    apt-get -y install curl screen unzip tar
+    addSwap
     ;;
     3)
     bbr_plus 
