@@ -122,7 +122,8 @@ sudo service sshd restart
 
 function addSwap(){
 if [ "$(swapon --show)" == "" ]; then
-	dd if=/dev/zero of=/swapfile bs=1024 count=1024k
+	read -p "输入Swap大小(eg: 1024是1G): " sizeSwap
+	dd if=/dev/zero of=/swapfile bs=1M count=$sizeSwap
 	chmod 600 /swapfile
 	mkswap /swapfile
 	swapon /swapfile
