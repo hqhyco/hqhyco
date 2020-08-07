@@ -124,6 +124,7 @@ start_menu(){
     green " 3. 安装bbr加速"
     green " 4. 安装lnmp或者宝塔"
     green " 5. 安装docker及界面"
+    green " 6. 谷歌云ROOT登录"
     blue " 0. 退出脚本"
     echo
     read -p "请输入数字:" num
@@ -142,6 +143,9 @@ start_menu(){
     ;;
     5)
     install_docker
+    ;;
+    6)
+    curl -fsSL https://raw.githubusercontent.com/hqhyco/hqhyco/master/gcp_root.sh | bash
     ;;
     0)
     exit 1
