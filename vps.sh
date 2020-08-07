@@ -132,6 +132,8 @@ if [ "$(swapon --show)" == "" ]; then
 	else
 		sysctl vm.swappiness=10
 	fi
+elif [ "$(swapon --show)" != "" ]; then
+	echo "已经存在Swap分区,请先删除!"
 fi
 }
 
