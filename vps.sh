@@ -40,10 +40,10 @@ read -p "请输入数字:" num
     cd /root
     if [-e "install.sh"]; then
 	bash install.sh
-	else
+    else
 	wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh
-    bash install.sh
-	fi
+    	bash install.sh
+    fi
     ;;
     2)
     cd /root
