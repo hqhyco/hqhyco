@@ -179,7 +179,7 @@ start_menu(){
     start_menu
     ;;
     0)
-    exit
+    exit 1
     ;;
     *)
     clear
