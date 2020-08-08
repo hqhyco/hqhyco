@@ -132,6 +132,7 @@ if [ "$(swapon --show)" == "" ]; then
 		echo "添加失败,自己找原因"
 	else
 		sysctl vm.swappiness=10
+		start_menu
 	fi
 elif [ "$(swapon --show)" != "" ]; then
 	echo "已经存在Swap分区,请先删除!"
@@ -157,24 +158,28 @@ start_menu(){
     case "$num" in
     1)
     apt-get -y update && apt-get -y install curl screen unzip
+    start_menu
     ;;
     2)
     addSwap
     ;;
     3)
-    bbr_plus 
+    bbr_plus
+    start_menu
     ;;
     4)
     bt
     ;;
     5)
     install_docker
+    start_menu
     ;;
     6)
     gcp_root
+    start_menu
     ;;
     0)
-    exit 1
+    exit
     ;;
     *)
     clear
