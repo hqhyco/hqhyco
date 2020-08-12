@@ -152,6 +152,7 @@ start_menu(){
     green " 4. 安装lnmp或者宝塔"
     green " 5. 安装docker及界面"
     green " 6. 谷歌云ROOT登录"
+    green " 7. 更新脚本"
     blue " 0. 退出脚本"
     echo
     read -p "请输入数字:" num
@@ -178,7 +179,10 @@ start_menu(){
     gcp_root
     start_menu
     ;;
+    7)
+    rm -f vps.sh
     wget -N --no-check-certificate https://raw.githubusercontent.com/hqhyco/hqhyco/master/vps.sh
+    chmod u+x vps.sh
     ./vps.sh
     ;;
     0)
