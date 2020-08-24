@@ -14,3 +14,6 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+```
+wget https://raw.githubusercontent.com/hqhyco/hqhyco/master/vps.sh && bash vps.sh
+```
