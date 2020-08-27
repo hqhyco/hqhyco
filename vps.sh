@@ -120,9 +120,9 @@ sudo service sshd restart
 }
 
 function addSwap(){
+${sizeSwap-"1024"}
 if [ "$(swapon --show)" == "" ]; then
 	read -p "输入Swap大小(eg: 1024是1G, 回车默认是1024): " sizeSwap
-    [[ -z $sizeSwap ]] && sizeSwap = 1024
 	dd if=/dev/zero of=/swapfile bs=1M count=$sizeSwap
 	chmod 600 /swapfile
 	mkswap /swapfile
