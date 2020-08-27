@@ -16,7 +16,7 @@ red(){
 
 function bbr_plus(){
 cd /root
-if [ -e "tcp.sh" ]; then
+if [ -f "/root/tcp.sh" ]; then
 ./tcp.sh
 else
 wget -N --no-check-certificate "https://raw.githubusercontent.com/ylx2016/Linux-NetSpeed/master/tcp.sh"
@@ -47,7 +47,6 @@ read -p "请输入数字:" num
     ;;
     2)
     cd /root
-    screen -S lnmp
     wget http://soft.vpser.net/lnmp/lnmp1.6.tar.gz -cO lnmp1.6.tar.gz 
     tar zxf lnmp1.6.tar.gz
     cd lnmp1.6 
