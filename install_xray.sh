@@ -98,3 +98,5 @@ docker-compose up -d
 
 green "安装完成！"
 }
+
+install_xray
